@@ -1,0 +1,126 @@
+# GUÍA DE PERSONALIZACIÓN RÁPIDA
+
+## 🎯 Elementos que DEBES personalizar:
+
+### 1. TRIVIA - Respuestas Correctas (app.py)
+Abre `app.py` y modifica las líneas 32-36:
+
+```python
+correct_answers = {
+    0: "opcion1",  # Personaliza: Primera pregunta
+    1: "opcion2",  # Personaliza: Segunda pregunta  
+    2: "opcion3"   # Personaliza: Tercera pregunta
+}
+```
+
+**Importante:** Las opciones son "opcion1", "opcion2", o "opcion3"
+Corresponden al orden de las opciones en cada pregunta de trivia.html
+
+### 2. TRIVIA - Preguntas (templates/trivia.html)
+Busca estas secciones y personalízalas:
+
+**Pregunta 1 (línea ~75):**
+```html
+<div class="question-title">1. ¿Tu pregunta aquí?</div>
+```
+
+**Pregunta 2 (línea ~92):**
+```html
+<div class="question-title">2. ¿Tu pregunta aquí?</div>
+```
+
+**Pregunta 3 (línea ~109):**
+```html
+<div class="question-title">3. ¿Tu pregunta aquí?</div>
+```
+
+### 3. MENSAJE FINAL (templates/sorpresa.html)
+Busca la sección `<div class="message">` (línea ~178) y reemplaza con tu propio mensaje:
+
+```html
+<p>
+    <span class="highlight">Mi amor,</span> [Tu mensaje aquí]
+</p>
+```
+
+### 4. MÚSICA (templates/sorpresa.html)
+
+#### Opción A - Spotify (Recomendado):
+1. Ve a Spotify y busca tu canción favorita
+2. Click derecho → Compartir → Copiar enlace de inserción
+3. Reemplaza el URL en línea ~237:
+
+```html
+<iframe src="TU_ENLACE_DE_SPOTIFY_AQUÍ" ...>
+```
+
+#### Opción B - Archivo Local:
+1. Coloca tu archivo MP3 en: `static/music/cancion.mp3`
+2. Descomenta las líneas 225-232 en sorpresa.html
+3. Comenta el iframe de Spotify (líneas 234-245)
+
+### 5. FIRMA (templates/sorpresa.html)
+Línea ~203, personaliza:
+
+```html
+<div class="signature">
+    Con todo mi amor,<br>
+    [Tu nombre] 💖
+</div>
+```
+
+## 🚀 Comandos para ejecutar:
+
+### Instalar dependencias:
+```bash
+pip install -r requirements.txt
+```
+
+### Ejecutar aplicación:
+```bash
+python app.py
+```
+
+### Acceder:
+- Desde tu PC: http://localhost:5000
+- Desde celular: http://TU_IP:5000
+
+## 📱 Obtener tu IP:
+
+**Windows:**
+```bash
+ipconfig
+```
+Busca "Dirección IPv4"
+
+**Mac/Linux:**
+```bash
+ifconfig
+```
+
+## ✅ Checklist antes de mostrar:
+
+- [ ] Personalizar respuestas de trivia en app.py
+- [ ] Personalizar preguntas en trivia.html
+- [ ] Escribir tu mensaje en sorpresa.html
+- [ ] Configurar música (Spotify o local)
+- [ ] Probar en tu celular
+- [ ] Verificar que todas las páginas funcionan
+- [ ] Cerrar otras aplicaciones que usen el puerto 5000
+
+## 🎨 Cambios de color rápidos:
+
+Si quieres cambiar el color principal (rosa), busca en cada HTML:
+- `#ff6b9d` (rosa principal)
+- `#ffb6c1` (rosa claro)
+
+Y reemplázalos por tus colores favoritos.
+
+## 💡 Consejos:
+
+1. Prueba el sitio ANTES del momento especial
+2. Asegúrate de tener WiFi estable
+3. Ten el celular cargado
+4. Considera grabar la reacción 🎥
+
+¡Éxito! 💕

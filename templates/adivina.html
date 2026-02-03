@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adivina la Palabra 💝</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #fff5f7 0%, #ffe4e9 50%, #ffd4e0 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            overflow-x: hidden;
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 700px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(255, 105, 135, 0.3);
+            margin: 1rem auto;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: #ff6b9d;
+            margin-bottom: 1rem;
+        }
+
+        .clue {
+            font-size: 1.3rem;
+            color: #c44569;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #ffe4e9 0%, #fff5f7 100%);
+            border-radius: 15px;
+        }
+
+        .word-display {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .letter-box {
+            width: 50px;
+            height: 60px;
+            border: 3px solid #ff6b9d;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ff6b9d;
+            background: white;
+        }
+
+        .keyboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+            gap: 8px;
+            max-width: 500px;
+            margin: 2rem auto;
+        }
+
+        .key {
+            padding: 1rem;
+            background: linear-gradient(135deg, #ff6b9d 0%, #ffa3c1 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .key:hover:not(:disabled) {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.4);
+        }
+
+        .key:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .result {
+            margin-top: 2rem;
+            font-size: 1.5rem;
+            color: #c44569;
+            min-height: 40px;
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, #ffa751 0%, #ffe259 100%);
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-next:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 167, 81, 0.4);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            h1 { 
+                font-size: 2.5rem; 
+            }
+            .container { 
+                padding: 1.5rem; 
+            }
+            .letter-box {
+                width: 40px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+            .keyboard {
+                gap: 5px;
+            }
+            .key {
+                padding: 0.8rem;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 0.5rem;
+            }
+
+            h1 { 
+                font-size: 2rem;
+                line-height: 1.2;
+            }
+            
+            .clue {
+                font-size: 1.1rem;
+                padding: 1rem;
+            }
+
+            .container { 
+                padding: 1rem;
+                border-radius: 20px;
+            }
+            
+            .letter-box {
+                width: 35px;
+                height: 45px;
+                font-size: 1.3rem;
+                gap: 5px;
+            }
+            
+            .keyboard {
+                gap: 4px;
+                max-width: 100%;
+            }
+            
+            .key {
+                padding: 0.7rem 0.5rem;
+                font-size: 0.9rem;
+            }
+
+            .word-display {
+                gap: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container animate__animated animate__fadeIn">
+        <h1 class="animate__animated animate__bounceIn">Adivina la Palabra 🔤</h1>
+        
+        <div class="clue" id="clue"></div>
+        
+        <div class="word-display" id="wordDisplay"></div>
+        
+        <div class="keyboard" id="keyboard"></div>
+        
+        <div class="result" id="result"></div>
+        
+        <button class="btn-next hidden" id="nextBtn" onclick="nextWord()">
+            Siguiente Palabra →
+        </button>
+        
+        <button class="btn-next hidden" id="finishBtn" onclick="location.href='/flores'">
+            Ver la Sorpresa Final 🌹
+        </button>
+    </div>
+
+    <script>
+        const words = [
+            { word: 'AMOR', clue: 'Lo que siento por ti cada día 💕' },
+            { word: 'AZALEA', clue: 'Tu nombre hermoso 🌸' },
+            { word: 'INTRODUCIENDOTELA', clue: 'Como me gusta estar contigo ❤️' },
+            { word: 'SIEMPRE', clue: 'Por cuánto tiempo te voy a amar 💖' },
+            { word: 'EXITADO', clue: 'Como me haces sentir bb 😊' }
+        ];
+
+        let currentWordIndex = 0;
+        let currentWord = '';
+        let guessedLetters = [];
+        let displayWord = [];
+
+        function initGame() {
+            const wordData = words[currentWordIndex];
+            currentWord = wordData.word;
+            guessedLetters = [];
+            displayWord = Array(currentWord.length).fill('_');
+            
+            document.getElementById('clue').textContent = wordData.clue;
+            document.getElementById('result').textContent = '';
+            document.getElementById('nextBtn').classList.add('hidden');
+            document.getElementById('finishBtn').classList.add('hidden');
+            
+            updateDisplay();
+            createKeyboard();
+        }
+
+        function updateDisplay() {
+            const displayDiv = document.getElementById('wordDisplay');
+            displayDiv.innerHTML = '';
+            
+            displayWord.forEach(letter => {
+                const box = document.createElement('div');
+                box.className = 'letter-box';
+                box.textContent = letter;
+                if (letter !== '_') {
+                    box.classList.add('animate__animated', 'animate__bounceIn');
+                }
+                displayDiv.appendChild(box);
+            });
+        }
+
+        function createKeyboard() {
+            const keyboardDiv = document.getElementById('keyboard');
+            keyboardDiv.innerHTML = '';
+            
+            const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+            
+            letters.forEach(letter => {
+                const key = document.createElement('button');
+                key.className = 'key';
+                key.textContent = letter;
+                key.onclick = () => guessLetter(letter, key);
+                keyboardDiv.appendChild(key);
+            });
+        }
+
+        function guessLetter(letter, keyElement) {
+            if (guessedLetters.includes(letter)) return;
+            
+            guessedLetters.push(letter);
+            keyElement.disabled = true;
+            
+            if (currentWord.includes(letter)) {
+                // Letra correcta
+                for (let i = 0; i < currentWord.length; i++) {
+                    if (currentWord[i] === letter) {
+                        displayWord[i] = letter;
+                    }
+                }
+                updateDisplay();
+                
+                // Verificar si ganó
+                if (!displayWord.includes('_')) {
+                    winGame();
+                }
+            } else {
+                // Letra incorrecta
+                keyElement.style.background = 'linear-gradient(135deg, #95a5a6 0%, #bdc3c7 100%)';
+            }
+        }
+
+        function winGame() {
+            document.getElementById('result').innerHTML = '¡Correcto bb! 🎉💕';
+            document.getElementById('result').classList.add('animate__animated', 'animate__bounceIn');
+            
+            createConfetti();
+            
+            if (currentWordIndex < words.length - 1) {
+                document.getElementById('nextBtn').classList.remove('hidden');
+            } else {
+                document.getElementById('finishBtn').classList.remove('hidden');
+            }
+        }
+
+        function nextWord() {
+            currentWordIndex++;
+            initGame();
+        }
+
+        function createConfetti() {
+            const hearts = ['❤️', '💕', '💖', '💗', '💝'];
+            
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.position = 'fixed';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.top = '-50px';
+                heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
+                heart.style.pointerEvents = 'none';
+                heart.style.zIndex = '1000';
+                heart.style.animation = 'fall ' + (2 + Math.random() * 2) + 's linear forwards';
+                
+                document.body.appendChild(heart);
+                
+                setTimeout(() => heart.remove(), 4000);
+            }
+        }
+
+        // Agregar animación CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fall {
+                to {
+                    top: 100vh;
+                    transform: rotate(360deg);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Iniciar juego
+        initGame();
+    </script>
+</body>
+</html>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Ti, Con Todo Mi Amor ❤️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #fff5f7 0%, #ffe4e9 50%, #ffd4e0 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            position: relative;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        /* Confeti de corazones */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #ff69b4;
+            position: fixed;
+            top: -10px;
+            z-index: 1;
+            animation: confetti-fall 5s linear infinite;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        .container {
+            text-align: center;
+            padding: 3rem 2rem;
+            max-width: 900px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(255, 105, 135, 0.4);
+            backdrop-filter: blur(10px);
+            z-index: 10;
+            position: relative;
+            margin: 1rem auto;
+        }
+
+        /* Decoración de corazones en las esquinas */
+        .corner-heart {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0.3;
+        }
+
+        .corner-heart.top-left {
+            top: 20px;
+            left: 20px;
+            animation: pulse-heart 2s infinite;
+        }
+
+        .corner-heart.top-right {
+            top: 20px;
+            right: 20px;
+            animation: pulse-heart 2s infinite 0.5s;
+        }
+
+        .corner-heart.bottom-left {
+            bottom: 20px;
+            left: 20px;
+            animation: pulse-heart 2s infinite 1s;
+        }
+
+        .corner-heart.bottom-right {
+            bottom: 20px;
+            right: 20px;
+            animation: pulse-heart 2s infinite 1.5s;
+        }
+
+        @keyframes pulse-heart {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.2); opacity: 0.5; }
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.5rem;
+            background: linear-gradient(135deg, #ff6b9d 0%, #ff1493 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(255, 107, 157, 0.2);
+        }
+
+        .divider {
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ff6b9d, transparent);
+            margin: 2rem auto;
+        }
+
+        .message {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            line-height: 2;
+            color: #555;
+            margin: 2rem 0;
+            text-align: justify;
+            text-align-last: center;
+        }
+
+        .message p {
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight {
+            color: #ff1493;
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #ff6b9d;
+            margin-top: 3rem;
+            text-align: right;
+            padding-right: 2rem;
+        }
+
+        /* Reproductor de música */
+        .music-player {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, #ffe4e9 0%, #fff5f7 100%);
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.2);
+        }
+
+        .music-title {
+            font-size: 1.2rem;
+            color: #c44569;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .music-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .play-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff6b9d 0%, #ffa3c1 100%);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.4);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(255, 107, 157, 0.6);
+        }
+
+        /* Nota: Puedes reemplazar esto con un iframe de Spotify */
+        .spotify-embed {
+            margin-top: 1rem;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .floating-hearts {
+            position: fixed;
+            pointer-events: none;
+            font-size: 2rem;
+            animation: float-up 4s ease-in infinite;
+        }
+
+        @keyframes float-up {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+            
+            .container {
+                padding: 2rem 1.5rem;
+            }
+            
+            .message {
+                font-size: 1.2rem;
+                line-height: 1.8;
+            }
+
+            .signature {
+                font-size: 2rem;
+                padding-right: 1rem;
+            }
+
+            .corner-heart {
+                font-size: 2rem;
+            }
+
+            .music-player {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 0.5rem;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+                line-height: 1.2;
+            }
+            
+            .container {
+                padding: 1.5rem 1rem;
+                border-radius: 20px;
+            }
+            
+            .message {
+                font-size: 1.1rem;
+                line-height: 1.7;
+            }
+
+            .signature {
+                font-size: 1.6rem;
+                text-align: center;
+                padding-right: 0;
+            }
+
+            .music-player {
+                padding: 1rem;
+            }
+
+            .corner-heart {
+                font-size: 1.5rem;
+            }
+
+            .divider {
+                width: 150px;
+            }
+
+            .photo-container img {
+                border-radius: 15px;
+                border: 3px solid white;
+            }
+        }
+
+        /* Animación de entrada para el mensaje */
+        .fade-in-text {
+            animation: fadeInText 1s ease-in forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeInText {
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Corazones decorativos en las esquinas -->
+    <div class="corner-heart top-left">💖</div>
+    <div class="corner-heart top-right">💕</div>
+    <div class="corner-heart bottom-left">💗</div>
+    <div class="corner-heart bottom-right">💝</div>
+
+    <div class="container animate__animated animate__fadeIn">
+        <h1 class="animate__animated animate__bounceIn">Para Ti BB 💖</h1>
+        
+        <div class="divider"></div>
+
+        <!-- Foto de Boda -->
+        <div class="photo-container animate__animated animate__fadeIn animate__delay-1s" style="margin: 2rem 0;">
+            <img src="{{ url_for('static', filename='images/si.png') }}" 
+                 alt="Nosotros 💕" 
+                 style="width: 100%; max-width: 500px; border-radius: 20px; box-shadow: 0 15px 40px rgba(255, 107, 157, 0.4); border: 5px solid white;">
+        </div>
+
+        <div class="message fade-in-text" style="animation-delay: 0.5s;">
+            <p style="font-size: 2rem; margin-top: 2rem;">
+                💕 Te amo mucho 💕
+            </p>
+            
+            <p style="font-size: 1.6rem; margin-top: 2rem; color: #ff6b9d;">
+                🌸 5 de Septiembre, 2025 🌸
+            </p>
+        </div>
+
+        <div class="signature animate__animated animate__fadeIn animate__delay-3s">
+            Con todo mi amor,<br>Tu sposo 💖
+        </div>
+
+        <div class="divider" style="margin-top: 3rem;"></div>
+
+        <!-- Reproductor de música -->
+        <div class="music-player animate__animated animate__fadeInUp animate__delay-4s">
+            <div class="music-title">🎵 Nuestra Canción 🎵</div>
+            
+            <audio id="audioPlayer" controls autoplay loop style="width: 100%; border-radius: 50px;">
+                <source src="{{ url_for('static', filename='music/1.wav') }}" type="audio/wav">
+                Tu navegador no soporta el elemento de audio.
+            </audio>
+            
+            <div style="margin-top: 10px; font-size: 0.9rem; color: #888;">
+                <p>Si no se reproduce automáticamente, pulsa el botón de play ▶️</p>
+                <p>Love The Hell Out Of You - Lewis Capaldi</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var audio = document.getElementById("audioPlayer");
+            audio.play().catch(function(error) {
+                console.log("Autoplay blocked:", error);
+                // Si el autoplay falla, intentar reproducir al primer clic en cualquier lugar
+                document.body.addEventListener('click', function() {
+                    audio.play();
+                }, { once: true });
+            });
+        });
+
+        // Crear confeti de corazones
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + '%';
+            confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            confetti.style.animationDelay = Math.random() * 5 + 's';
+            
+            const hearts = ['❤️', '💕', '💖', '💗', '💝', '💘'];
+            confetti.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+            confetti.style.fontSize = (Math.random() * 20 + 15) + 'px';
+            
+            document.body.appendChild(confetti);
+            
+            setTimeout(() => confetti.remove(), 5000);
+        }
+
+        // Crear confeti continuamente
+        setInterval(createConfetti, 300);
+
+        // Crear corazones flotantes desde abajo
+        function createFloatingHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'floating-hearts';
+            heart.textContent = ['💕', '💖', '💗'][Math.floor(Math.random() * 3)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.bottom = '-50px';
+            heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+            
+            document.body.appendChild(heart);
+            
+            setTimeout(() => heart.remove(), 4000);
+        }
+
+        setInterval(createFloatingHeart, 800);
+
+        // Función para controlar el reproductor de audio local (si se usa)
+        function togglePlay() {
+            const audio = document.getElementById('audioPlayer');
+            const button = document.getElementById('playButton');
+            
+            if (audio) {
+                if (audio.paused) {
+                    audio.play();
+                    button.textContent = '⏸️';
+                } else {
+                    audio.pause();
+                    button.textContent = '▶️';
+                }
+            }
+        }
+
+        // Animación de escritura para el mensaje (opcional)
+        const messageElements = document.querySelectorAll('.message p');
+        messageElements.forEach((element, index) => {
+            element.style.animationDelay = (index * 0.5 + 1) + 's';
+            element.classList.add('fade-in-text');
+        });
+
+        // Efecto de nieve de corazones al hacer scroll (opcional)
+        window.addEventListener('scroll', () => {
+            createConfetti();
+        });
+    </script>
+</body>
+</html>

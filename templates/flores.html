@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flores Para Ti 🌹</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #fff5f7 0%, #ffe4e9 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            z-index: 10;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            color: #ff6b9d;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(255, 107, 157, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            color: #c44569;
+        }
+
+        .garden {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+            perspective: 1000px;
+        }
+
+        /* Flores SVG con animaciones */
+        .flower {
+            animation: bloom 2s ease-out forwards, sway 3s ease-in-out infinite;
+            transform-origin: bottom center;
+        }
+
+        .flower:nth-child(1) { animation-delay: 0s; }
+        .flower:nth-child(2) { animation-delay: 0.3s; }
+        .flower:nth-child(3) { animation-delay: 0.6s; }
+        .flower:nth-child(4) { animation-delay: 0.9s; }
+        .flower:nth-child(5) { animation-delay: 1.2s; }
+
+        @keyframes bloom {
+            from {
+                transform: scale(0) translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes sway {
+            0%, 100% { transform: rotate(-2deg); }
+            50% { transform: rotate(2deg); }
+        }
+
+        .flower:hover {
+            animation: sway 0.5s ease-in-out infinite;
+            filter: brightness(1.2);
+        }
+
+        /* Estilo de pétalos */
+        .petal {
+            transition: all 0.3s ease;
+        }
+
+        .flower:hover .petal {
+            transform: scale(1.1);
+        }
+
+        .btn-continue {
+            background: linear-gradient(135deg, #ffa751 0%, #ffe259 100%);
+            color: white;
+            border: none;
+            padding: 1.2rem 3rem;
+            font-size: 1.3rem;
+            font-family: 'Playfair Display', serif;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255, 167, 81, 0.4);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            z-index: 10;
+        }
+
+        .btn-continue:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 167, 81, 0.6);
+        }
+
+        /* Partículas flotantes */
+        .particle {
+            position: fixed;
+            pointer-events: none;
+            animation: float-particle 10s infinite ease-in-out;
+        }
+
+        @keyframes float-particle {
+            0%, 100% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translateY(-100px) translateX(50px) rotate(180deg);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .garden {
+                gap: 2rem;
+            }
+
+            .flower {
+                transform: scale(0.8);
+            }
+
+            .header {
+                margin-bottom: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 0.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+                line-height: 1.2;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .garden {
+                gap: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            .flower {
+                transform: scale(0.6);
+            }
+
+            .btn-continue {
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
+            }
+
+            .header {
+                margin-bottom: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header animate__animated animate__fadeInDown">
+        <h1>Flores Para Ti 🌹</h1>
+        <p class="subtitle">Cada flor representa un momento especial contigo</p>
+    </div>
+
+    <div class="garden">
+        <!-- Flor Rosa 1 -->
+        <svg class="flower" width="120" height="180" viewBox="0 0 120 180">
+            <!-- Tallo -->
+            <line x1="60" y1="180" x2="60" y2="80" stroke="#4a7c59" stroke-width="4"/>
+            
+            <!-- Hojas -->
+            <ellipse cx="45" cy="130" rx="15" ry="8" fill="#6ba368" transform="rotate(-30 45 130)"/>
+            <ellipse cx="75" cy="110" rx="15" ry="8" fill="#6ba368" transform="rotate(30 75 110)"/>
+            
+            <!-- Pétalos -->
+            <circle class="petal" cx="60" cy="50" r="15" fill="#ffb6c1"/>
+            <circle class="petal" cx="75" cy="60" r="15" fill="#ffb6c1"/>
+            <circle class="petal" cx="75" cy="80" r="15" fill="#ffb6c1"/>
+            <circle class="petal" cx="60" cy="90" r="15" fill="#ffb6c1"/>
+            <circle class="petal" cx="45" cy="80" r="15" fill="#ffb6c1"/>
+            <circle class="petal" cx="45" cy="60" r="15" fill="#ffb6c1"/>
+            
+            <!-- Centro -->
+            <circle cx="60" cy="70" r="12" fill="#ff69b4"/>
+        </svg>
+
+        <!-- Flor Amarilla -->
+        <svg class="flower" width="120" height="200" viewBox="0 0 120 200">
+            <!-- Tallo -->
+            <line x1="60" y1="200" x2="60" y2="90" stroke="#4a7c59" stroke-width="4"/>
+            
+            <!-- Hojas -->
+            <ellipse cx="40" cy="150" rx="15" ry="8" fill="#6ba368" transform="rotate(-40 40 150)"/>
+            <ellipse cx="80" cy="130" rx="15" ry="8" fill="#6ba368" transform="rotate(40 80 130)"/>
+            
+            <!-- Pétalos -->
+            <ellipse class="petal" cx="60" cy="50" rx="12" ry="20" fill="#ffd700" transform="rotate(0 60 50)"/>
+            <ellipse class="petal" cx="60" cy="50" rx="12" ry="20" fill="#ffd700" transform="rotate(45 60 70)"/>
+            <ellipse class="petal" cx="60" cy="50" rx="12" ry="20" fill="#ffd700" transform="rotate(90 60 70)"/>
+            <ellipse class="petal" cx="60" cy="50" rx="12" ry="20" fill="#ffd700" transform="rotate(135 60 70)"/>
+            <ellipse class="petal" cx="60" cy="50" rx="12" ry="20" fill="#ffd700" transform="rotate(180 60 70)"/>
+            <ellipse class="petal" cx="60" cy="50" rx="12" ry="20" fill="#ffd700" transform="rotate(225 60 70)"/>
+            <ellipse class="petal" cx="60" cy="50" rx="12" ry="20" fill="#ffd700" transform="rotate(270 60 70)"/>
+            <ellipse class="petal" cx="60" cy="50" rx="12" ry="20" fill="#ffd700" transform="rotate(315 60 70)"/>
+            
+            <!-- Centro -->
+            <circle cx="60" cy="70" r="15" fill="#ff8c00"/>
+        </svg>
+
+        <!-- Flor Rosa 2 -->
+        <svg class="flower" width="120" height="190" viewBox="0 0 120 190">
+            <!-- Tallo -->
+            <line x1="60" y1="190" x2="60" y2="85" stroke="#4a7c59" stroke-width="4"/>
+            
+            <!-- Hojas -->
+            <ellipse cx="48" cy="140" rx="15" ry="8" fill="#6ba368" transform="rotate(-35 48 140)"/>
+            <ellipse cx="72" cy="120" rx="15" ry="8" fill="#6ba368" transform="rotate(35 72 120)"/>
+            
+            <!-- Pétalos -->
+            <circle class="petal" cx="60" cy="55" r="14" fill="#ff91a4"/>
+            <circle class="petal" cx="74" cy="63" r="14" fill="#ff91a4"/>
+            <circle class="petal" cx="74" cy="77" r="14" fill="#ff91a4"/>
+            <circle class="petal" cx="60" cy="85" r="14" fill="#ff91a4"/>
+            <circle class="petal" cx="46" cy="77" r="14" fill="#ff91a4"/>
+            <circle class="petal" cx="46" cy="63" r="14" fill="#ff91a4"/>
+            
+            <!-- Centro -->
+            <circle cx="60" cy="70" r="11" fill="#ff1493"/>
+        </svg>
+
+        <!-- Flor Amarilla 2 -->
+        <svg class="flower" width="120" height="195" viewBox="0 0 120 195">
+            <!-- Tallo -->
+            <line x1="60" y1="195" x2="60" y2="88" stroke="#4a7c59" stroke-width="4"/>
+            
+            <!-- Hojas -->
+            <ellipse cx="42" cy="145" rx="15" ry="8" fill="#6ba368" transform="rotate(-38 42 145)"/>
+            <ellipse cx="78" cy="125" rx="15" ry="8" fill="#6ba368" transform="rotate(38 78 125)"/>
+            
+            <!-- Pétalos -->
+            <ellipse class="petal" cx="60" cy="48" rx="11" ry="19" fill="#ffed4e" transform="rotate(0 60 48)"/>
+            <ellipse class="petal" cx="60" cy="48" rx="11" ry="19" fill="#ffed4e" transform="rotate(45 60 68)"/>
+            <ellipse class="petal" cx="60" cy="48" rx="11" ry="19" fill="#ffed4e" transform="rotate(90 60 68)"/>
+            <ellipse class="petal" cx="60" cy="48" rx="11" ry="19" fill="#ffed4e" transform="rotate(135 60 68)"/>
+            <ellipse class="petal" cx="60" cy="48" rx="11" ry="19" fill="#ffed4e" transform="rotate(180 60 68)"/>
+            <ellipse class="petal" cx="60" cy="48" rx="11" ry="19" fill="#ffed4e" transform="rotate(225 60 68)"/>
+            <ellipse class="petal" cx="60" cy="48" rx="11" ry="19" fill="#ffed4e" transform="rotate(270 60 68)"/>
+            <ellipse class="petal" cx="60" cy="48" rx="11" ry="19" fill="#ffed4e" transform="rotate(315 60 68)"/>
+            
+            <!-- Centro -->
+            <circle cx="60" cy="68" r="14" fill="#ff6b35"/>
+        </svg>
+
+        <!-- Flor Rosa 3 -->
+        <svg class="flower" width="120" height="185" viewBox="0 0 120 185">
+            <!-- Tallo -->
+            <line x1="60" y1="185" x2="60" y2="82" stroke="#4a7c59" stroke-width="4"/>
+            
+            <!-- Hojas -->
+            <ellipse cx="44" cy="135" rx="15" ry="8" fill="#6ba368" transform="rotate(-32 44 135)"/>
+            <ellipse cx="76" cy="115" rx="15" ry="8" fill="#6ba368" transform="rotate(32 76 115)"/>
+            
+            <!-- Pétalos -->
+            <circle class="petal" cx="60" cy="52" r="15" fill="#ffc0cb"/>
+            <circle class="petal" cx="75" cy="62" r="15" fill="#ffc0cb"/>
+            <circle class="petal" cx="75" cy="82" r="15" fill="#ffc0cb"/>
+            <circle class="petal" cx="60" cy="92" r="15" fill="#ffc0cb"/>
+            <circle class="petal" cx="45" cy="82" r="15" fill="#ffc0cb"/>
+            <circle class="petal" cx="45" cy="62" r="15" fill="#ffc0cb"/>
+            
+            <!-- Centro -->
+            <circle cx="60" cy="72" r="12" fill="#ff1493"/>
+        </svg>
+    </div>
+
+    <a href="/sorpresa" class="btn-continue animate__animated animate__bounceIn animate__delay-3s">
+        Continuar al Gran Final 💖
+    </a>
+
+    <script>
+        // Crear partículas flotantes
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.textContent = ['🌸', '🌺', '🌼', '🌻', '🌹'][Math.floor(Math.random() * 5)];
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.fontSize = (Math.random() * 20 + 15) + 'px';
+            particle.style.animationDelay = Math.random() * 5 + 's';
+            particle.style.animationDuration = (Math.random() * 5 + 8) + 's';
+            document.body.appendChild(particle);
+        }
+
+        // Crear múltiples partículas
+        for (let i = 0; i < 15; i++) {
+            createParticle();
+        }
+
+        // Efecto de click en las flores
+        document.querySelectorAll('.flower').forEach(flower => {
+            flower.addEventListener('click', function() {
+                // Crear corazones al hacer click
+                for (let i = 0; i < 5; i++) {
+                    const heart = document.createElement('div');
+                    heart.style.position = 'fixed';
+                    heart.style.left = event.clientX + 'px';
+                    heart.style.top = event.clientY + 'px';
+                    heart.textContent = '💕';
+                    heart.style.fontSize = '2rem';
+                    heart.style.pointerEvents = 'none';
+                    heart.style.animation = 'float-particle 2s ease-out forwards';
+                    heart.style.zIndex = '1000';
+                    document.body.appendChild(heart);
+                    
+                    setTimeout(() => heart.remove(), 2000);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

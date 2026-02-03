@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atrapa los Corazones 💕</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #fff5f7 0%, #ffe4e9 50%, #ffd4e0 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            overflow-x: hidden;
+        }
+
+        .container {
+            text-align: center;
+            padding: 1.5rem;
+            max-width: 900px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(255, 105, 135, 0.3);
+            margin: 1rem auto;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: #ff6b9d;
+            margin-bottom: 1rem;
+        }
+
+        .game-info {
+            display: flex;
+            justify-content: space-around;
+            margin: 1rem 0;
+            font-size: 1.3rem;
+            color: #c44569;
+            font-weight: 600;
+        }
+
+        .game-area {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #ffe4e9 0%, #fff5f7 100%);
+            border-radius: 20px;
+            margin: 2rem 0;
+            overflow: hidden;
+            border: 3px solid #ff6b9d;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 2.5rem;
+            cursor: pointer;
+            user-select: none;
+            transition: transform 0.1s;
+            animation: fall linear;
+        }
+
+        .heart:hover {
+            transform: scale(1.2);
+        }
+
+        @keyframes fall {
+            to {
+                top: 100%;
+            }
+        }
+
+        .start-btn, .btn-next {
+            background: linear-gradient(135deg, #ff6b9d 0%, #ffa3c1 100%);
+            color: white;
+            border: none;
+            padding: 1.2rem 3rem;
+            font-size: 1.3rem;
+            font-family: 'Playfair Display', serif;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.4);
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+        }
+
+        .start-btn:hover, .btn-next:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 107, 157, 0.6);
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, #ffa751 0%, #ffe259 100%);
+        }
+
+        .game-over {
+            position: fixed;
+            top: 45%; 
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            max-width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .game-over h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #ff6b9d;
+            margin-bottom: 1rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            h1 { 
+                font-size: 2.5rem; 
+            }
+            .game-area { 
+                height: 350px; 
+            }
+            .heart { 
+                font-size: 2rem; 
+            }
+            .container {
+                padding: 1rem;
+            }
+            .game-over {
+                padding: 1rem;
+                max-height: 80%;
+            }
+            .game-over h2 {
+                font-size: 2rem;
+            }
+            .start-btn, .btn-next {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+                margin: 0.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 0.5rem;
+            }
+
+            h1 { 
+                font-size: 2rem;
+                line-height: 1.2;
+            }
+            
+            .game-area { 
+                height: 300px; 
+            }
+            
+            .heart { 
+                font-size: 1.8rem; 
+            }
+
+            .game-info {
+                font-size: 1.1rem;
+                gap: 1rem;
+                flex-direction: column;
+            }
+
+            .start-btn, .btn-next {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+                width: 100%;
+                margin: 0.3rem 0;
+            }
+
+            .container {
+                padding: 1rem;
+                border-radius: 20px;
+            }
+            
+            .game-over {
+                padding: 0.8rem;
+                max-height: 75%;
+                width: 95%;
+            }
+            
+            .game-over h2 {
+                font-size: 1.5rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .game-over p {
+                font-size: 1rem !important;
+                margin: 0.5rem 0 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container animate__animated animate__fadeIn">
+        <h1 class="animate__animated animate__bounceIn">Atrapa los Corazones 💕</h1>
+        
+        <div class="game-info">
+            <div>Puntos: <span id="score">0</span></div>
+            <div>Tiempo: <span id="time">30</span>s</div>
+        </div>
+
+        <div class="game-area" id="gameArea">
+            <!-- Los elementos del juego (corazones) se generan aquí dinámicamente -->
+        </div>
+    </div>
+
+    <!-- Modales movidos fuera del contenedor para evitar problemas con transformaciones CSS -->
+    <div class="game-over hidden" id="startScreen">
+        <h2>¿Lista para jugar?</h2>
+        <p style="color: #c44569; margin-bottom: 1rem;">¡Atrapa todos los corazones que puedas!</p>
+        <button class="start-btn" onclick="startGame()">Comenzar 🎮</button>
+    </div>
+
+    <div class="game-over hidden" id="gameOverScreen">
+        <h2>¡Tiempo terminado!</h2>
+        <p style="color: #c44569; font-size: 1.5rem; margin: 1rem 0;">
+            Puntos: <span id="finalScore">0</span> ❤️
+        </p>
+        <p style="color: #c44569; margin-bottom: 1rem;">
+            <span id="message"></span>
+        </p>
+        <button class="start-btn" onclick="startGame()">Jugar de Nuevo</button>
+        <button class="btn-next" onclick="location.href='/adivina'">Siguiente Juego →</button>
+    </div>
+
+    <script>
+        let score = 0;
+        let timeLeft = 30;
+        let gameActive = false;
+        let gameInterval;
+        let spawnInterval;
+
+        const hearts = ['❤️', '💕', '💖', '💗', '💝', '💘'];
+
+        function startGame() {
+            score = 0;
+            timeLeft = 30;
+            gameActive = true;
+            
+            document.getElementById('score').textContent = score;
+            document.getElementById('time').textContent = timeLeft;
+            document.getElementById('startScreen').classList.add('hidden');
+            document.getElementById('gameOverScreen').classList.add('hidden');
+            
+            // Limpiar corazones existentes
+            const existingHearts = document.querySelectorAll('.heart');
+            existingHearts.forEach(h => h.remove());
+            
+            // Timer
+            gameInterval = setInterval(() => {
+                timeLeft--;
+                document.getElementById('time').textContent = timeLeft;
+                
+                if (timeLeft <= 0) {
+                    endGame();
+                }
+            }, 1000);
+            
+            // Spawn hearts
+            spawnInterval = setInterval(spawnHeart, 800);
+        }
+
+        function spawnHeart() {
+            if (!gameActive) return;
+            
+            const gameArea = document.getElementById('gameArea');
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+            heart.style.left = Math.random() * (gameArea.clientWidth - 50) + 'px';
+            heart.style.top = '-50px';
+            
+            const duration = 2 + Math.random() * 2;
+            heart.style.animationDuration = duration + 's';
+            
+            heart.onclick = () => catchHeart(heart);
+            
+            gameArea.appendChild(heart);
+            
+            setTimeout(() => {
+                if (heart.parentNode) {
+                    heart.remove();
+                }
+            }, duration * 1000);
+        }
+
+        function catchHeart(heart) {
+            if (!gameActive) return;
+            
+            score++;
+            document.getElementById('score').textContent = score;
+            
+            heart.style.animation = 'none';
+            heart.style.transform = 'scale(1.5)';
+            heart.style.transition = 'all 0.3s';
+            heart.style.opacity = '0';
+            
+            setTimeout(() => heart.remove(), 300);
+        }
+
+        function endGame() {
+            gameActive = false;
+            clearInterval(gameInterval);
+            clearInterval(spawnInterval);
+            
+            document.getElementById('finalScore').textContent = score;
+            
+            let message = '';
+            if (score >= 30) {
+                message = '¡Increíble! Eres la mejor bb 🏆';
+            } else if (score >= 20) {
+                message = '¡Excelente trabajo! Me encanta jugar contigo 🌟';
+            } else if (score >= 10) {
+                message = '¡Bien hecho! Eres genial 💖';
+            } else {
+                message = '¡Lo hiciste bien! Pero yo te amo más 💕';
+            }
+            
+            document.getElementById('message').textContent = message;
+            document.getElementById('gameOverScreen').classList.remove('hidden');
+            document.getElementById('gameOverScreen').classList.add('animate__animated', 'animate__bounceIn');
+        }
+
+        // Mostrar pantalla inicial
+        window.onload = () => {
+            document.getElementById('startScreen').classList.remove('hidden');
+        };
+    </script>
+</body>
+</html>

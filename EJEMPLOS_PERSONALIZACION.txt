@@ -1,0 +1,409 @@
+═══════════════════════════════════════════════════════════════════════════════
+                    EJEMPLOS DE PERSONALIZACIÓN
+═══════════════════════════════════════════════════════════════════════════════
+
+Este archivo contiene ejemplos concretos de cómo personalizar cada elemento.
+Copia y pega estos ejemplos según tus necesidades.
+
+═══════════════════════════════════════════════════════════════════════════════
+📝 EJEMPLO 1: PERSONALIZAR RESPUESTAS DE LA TRIVIA
+═══════════════════════════════════════════════════════════════════════════════
+
+Archivo: app.py (líneas 32-36)
+
+ANTES:
+```python
+correct_answers = {
+    0: "opcion1",  # Personaliza según tu relación
+    1: "opcion2",  # Personaliza según tu relación
+    2: "opcion3"   # Personaliza según tu relación
+}
+```
+
+EJEMPLO DESPUÉS:
+```python
+correct_answers = {
+    0: "opcion2",  # La respuesta correcta es la SEGUNDA opción
+    1: "opcion1",  # La respuesta correcta es la PRIMERA opción
+    2: "opcion3"   # La respuesta correcta es la TERCERA opción
+}
+```
+
+IMPORTANTE: Las opciones se cuentan así:
+  - Primera opción de cada pregunta = "opcion1"
+  - Segunda opción de cada pregunta = "opcion2"
+  - Tercera opción de cada pregunta = "opcion3"
+
+═══════════════════════════════════════════════════════════════════════════════
+📝 EJEMPLO 2: PERSONALIZAR PREGUNTAS DE LA TRIVIA
+═══════════════════════════════════════════════════════════════════════════════
+
+Archivo: templates/trivia.html
+
+PREGUNTA 1 (línea ~75-90):
+
+ANTES:
+```html
+<div class="question-title">1. ¿Cuál fue nuestro primer viaje juntos?</div>
+<div class="options">
+    <div class="option">
+        <input type="radio" id="q1_a" name="question1" value="opcion1">
+        <label for="q1_a">La playa en verano 🏖️</label>
+    </div>
+    <div class="option">
+        <input type="radio" id="q1_b" name="question1" value="opcion2">
+        <label for="q1_b">Las montañas en invierno 🏔️</label>
+    </div>
+    <div class="option">
+        <input type="radio" id="q1_c" name="question1" value="opcion3">
+        <label for="q1_c">La ciudad donde nos conocimos 🏙️</label>
+    </div>
+</div>
+```
+
+EJEMPLO DESPUÉS (Personalizado):
+```html
+<div class="question-title">1. ¿En qué mes nos conocimos?</div>
+<div class="options">
+    <div class="option">
+        <input type="radio" id="q1_a" name="question1" value="opcion1">
+        <label for="q1_a">Enero 2020 ❄️</label>
+    </div>
+    <div class="option">
+        <input type="radio" id="q1_b" name="question1" value="opcion2">
+        <label for="q1_b">Junio 2019 ☀️</label>
+    </div>
+    <div class="option">
+        <input type="radio" id="q1_c" name="question1" value="opcion3">
+        <label for="q1_c">Diciembre 2018 🎄</label>
+    </div>
+</div>
+```
+
+═══════════════════════════════════════════════════════════════════════════════
+📝 EJEMPLO 3: PERSONALIZAR MENSAJE DE AMOR
+═══════════════════════════════════════════════════════════════════════════════
+
+Archivo: templates/sorpresa.html (línea ~178-203)
+
+ANTES:
+```html
+<div class="message fade-in-text" style="animation-delay: 0.5s;">
+    <p>
+        <span class="highlight">Mi amor,</span> cada día contigo es un regalo...
+    </p>
+    ...
+</div>
+```
+
+EJEMPLO DESPUÉS (Personalizado - Mensaje Corto):
+```html
+<div class="message fade-in-text" style="animation-delay: 0.5s;">
+    <p>
+        <span class="highlight">Mi amor,</span> desde el día que te conocí, 
+        mi vida cambió por completo. Eres mi razón de ser, mi inspiración 
+        y <span class="highlight">mi mejor decisión</span>.
+    </p>
+    
+    <p>
+        Gracias por cada sonrisa, por cada abrazo, y por ser mi compañera 
+        en esta aventura llamada vida. Te amo más de lo que las palabras 
+        pueden expresar.
+    </p>
+
+    <p style="font-size: 1.6rem; margin-top: 2rem;">
+        💕 Para siempre tuyo 💕
+    </p>
+</div>
+```
+
+EJEMPLO DESPUÉS (Personalizado - Mensaje Largo):
+```html
+<div class="message fade-in-text" style="animation-delay: 0.5s;">
+    <p>
+        <span class="highlight">Mi amor,</span> han pasado [X años] desde 
+        que nuestras vidas se cruzaron, y cada día contigo ha sido mejor 
+        que el anterior.
+    </p>
+    
+    <p>
+        Recuerdo perfectamente el día que nos conocimos en [lugar]. Llevabas 
+        ese [descripción] que me dejó sin aliento. Desde ese momento, supe 
+        que eras <span class="highlight">alguien especial</span>.
+    </p>
+    
+    <p>
+        Me has enseñado el verdadero significado del amor. Tu paciencia, 
+        tu bondad, tu forma de verme incluso cuando no me veo a mí mismo. 
+        Gracias por ser mi refugio en los momentos difíciles y mi alegría 
+        en los buenos momentos.
+    </p>
+    
+    <p>
+        Prometo seguir amándote cada día más, cuidarte siempre, hacerte reír, 
+        y construir contigo el futuro que ambos soñamos. Porque contigo, 
+        <span class="highlight">he encontrado mi hogar</span>.
+    </p>
+
+    <p style="font-size: 1.6rem; margin-top: 2rem;">
+        💕 Te amo infinitamente 💕
+    </p>
+</div>
+```
+
+═══════════════════════════════════════════════════════════════════════════════
+📝 EJEMPLO 4: PERSONALIZAR FIRMA
+═══════════════════════════════════════════════════════════════════════════════
+
+Archivo: templates/sorpresa.html (línea ~205-207)
+
+ANTES:
+```html
+<div class="signature animate__animated animate__fadeIn animate__delay-3s">
+    Con todo mi amor,<br>Tu esposo que te adora 💖
+</div>
+```
+
+EJEMPLOS DESPUÉS:
+
+Opción 1 - Formal:
+```html
+<div class="signature animate__animated animate__fadeIn animate__delay-3s">
+    Con todo mi amor,<br>Juan Carlos 💖
+</div>
+```
+
+Opción 2 - Romántico:
+```html
+<div class="signature animate__animated animate__fadeIn animate__delay-3s">
+    Para siempre tuyo,<br>Tu amor eterno 💖
+</div>
+```
+
+Opción 3 - Con apodo:
+```html
+<div class="signature animate__animated animate__fadeIn animate__delay-3s">
+    Con todo mi corazón,<br>Tu "Osito" 💖
+</div>
+```
+
+Opción 4 - Con fecha:
+```html
+<div class="signature animate__animated animate__fadeIn animate__delay-3s">
+    Con amor infinito,<br>Carlos<br>
+    <span style="font-size: 1.2rem;">14 de Febrero, 2026</span> 💖
+</div>
+```
+
+═══════════════════════════════════════════════════════════════════════════════
+📝 EJEMPLO 5: CONFIGURAR MÚSICA DE SPOTIFY
+═══════════════════════════════════════════════════════════════════════════════
+
+Archivo: templates/sorpresa.html (línea ~234-245)
+
+PASOS:
+
+1. Ve a Spotify en tu navegador: https://open.spotify.com/
+2. Busca tu canción favorita (ejemplo: "Perfect" de Ed Sheeran)
+3. Click en los 3 puntos (...) junto al nombre de la canción
+4. Selecciona: Compartir → Insertar canción
+5. Copia el código que aparece
+
+EJEMPLO DE CÓDIGO A REEMPLAZAR:
+
+ANTES:
+```html
+<iframe 
+    style="border-radius:12px" 
+    src="https://open.spotify.com/embed/track/0tgVpDi06FyKpA1z0VMD4v?utm_source=generator" 
+    width="100%" 
+    height="152" 
+    frameBorder="0" 
+    allowfullscreen="" 
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+    loading="lazy">
+</iframe>
+```
+
+DESPUÉS (con tu canción):
+```html
+<iframe 
+    style="border-radius:12px" 
+    src="TU_ENLACE_AQUÍ" 
+    width="100%" 
+    height="152" 
+    frameBorder="0" 
+    allowfullscreen="" 
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+    loading="lazy">
+</iframe>
+```
+
+EJEMPLOS DE CANCIONES POPULARES:
+
+- Perfect (Ed Sheeran):
+  src="https://open.spotify.com/embed/track/0tgVpDi06FyKpA1z0VMD4v"
+
+- A Thousand Years (Christina Perri):
+  src="https://open.spotify.com/embed/track/4D7BCuvgdJJoOaRs4R8KRN"
+
+- All of Me (John Legend):
+  src="https://open.spotify.com/embed/track/3U4isOIWM3VvDubwSI3y7a"
+
+═══════════════════════════════════════════════════════════════════════════════
+📝 EJEMPLO 6: USAR MÚSICA LOCAL (Archivo MP3)
+═══════════════════════════════════════════════════════════════════════════════
+
+Archivo: templates/sorpresa.html
+
+PASOS:
+
+1. Coloca tu archivo MP3 en: static/music/cancion.mp3
+
+2. En sorpresa.html, DESCOMENTA las líneas 225-232:
+
+CÓDIGO A DESCOMENTAR:
+```html
+<audio id="audioPlayer" loop>
+    <source src="{{ url_for('static', filename='music/cancion.mp3') }}" type="audio/mpeg">
+    Tu navegador no soporta el elemento de audio.
+</audio>
+<div class="music-controls">
+    <button class="play-button" id="playButton" onclick="togglePlay()">▶️</button>
+</div>
+```
+
+3. COMENTA o ELIMINA el iframe de Spotify (líneas 234-245)
+
+RESULTADO:
+- Aparecerá un botón ▶️ para reproducir tu música local
+- El botón cambia a ⏸️ cuando está reproduciendo
+
+═══════════════════════════════════════════════════════════════════════════════
+📝 EJEMPLO 7: CAMBIAR COLORES DEL SITIO
+═══════════════════════════════════════════════════════════════════════════════
+
+Para cambiar el color principal (rosa) en TODO el sitio:
+
+BUSCAR Y REEMPLAZAR en TODOS los archivos HTML:
+
+Color Rosa Principal:
+  ANTES: #ff6b9d
+  DESPUÉS: [tu color en hexadecimal]
+
+Color Rosa Claro:
+  ANTES: #ffb6c1
+  DESPUÉS: [tu color en hexadecimal]
+
+Color Rosa Oscuro:
+  ANTES: #c44569
+  DESPUÉS: [tu color en hexadecimal]
+
+EJEMPLOS DE PALETAS ALTERNATIVAS:
+
+Paleta Azul:
+  - #6ba3ff (azul principal)
+  - #b6d4ff (azul claro)
+  - #4569c4 (azul oscuro)
+
+Paleta Púrpura:
+  - #b66bff (púrpura principal)
+  - #d4b6ff (púrpura claro)
+  - #6945c4 (púrpura oscuro)
+
+Paleta Verde Menta:
+  - #6bffa3 (verde principal)
+  - #b6ffd4 (verde claro)
+  - #45c469 (verde oscuro)
+
+═══════════════════════════════════════════════════════════════════════════════
+📝 EJEMPLO 8: MODIFICAR TÍTULO DE PÁGINA DE BIENVENIDA
+═══════════════════════════════════════════════════════════════════════════════
+
+Archivo: templates/index.html (línea ~95-106)
+
+ANTES:
+```html
+<h1 class="animate__animated animate__bounceIn">Para Ti, Mi Amor</h1>
+
+<div class="heart-icon">❤️</div>
+
+<p class="subtitle animate__animated animate__fadeInUp animate__delay-1s">
+    He creado algo especial para ti.<br>
+    Un pequeño viaje lleno de amor y sorpresas.<br>
+    ¿Estás lista para comenzar?
+</p>
+```
+
+EJEMPLO DESPUÉS 1 (Personalizado):
+```html
+<h1 class="animate__animated animate__bounceIn">Para Mi Reina</h1>
+
+<div class="heart-icon">👑</div>
+
+<p class="subtitle animate__animated animate__fadeInUp animate__delay-1s">
+    Hice esto especialmente para ti, mi amor.<br>
+    Prepárate para un viaje lleno de sorpresas.<br>
+    ¿Lista para comenzar?
+</p>
+```
+
+EJEMPLO DESPUÉS 2 (Aniversario):
+```html
+<h1 class="animate__animated animate__bounceIn">Feliz Aniversario</h1>
+
+<div class="heart-icon">🎉</div>
+
+<p class="subtitle animate__animated animate__fadeInUp animate__delay-1s">
+    Hoy celebramos [X años] juntos.<br>
+    He preparado algo muy especial para ti.<br>
+    ¿Estás lista para recordar nuestra historia?
+</p>
+```
+
+═══════════════════════════════════════════════════════════════════════════════
+✅ CHECKLIST DE PERSONALIZACIÓN COMPLETA
+═══════════════════════════════════════════════════════════════════════════════
+
+Antes de mostrar el sitio a tu esposa, verifica:
+
+[ ] app.py - Respuestas correctas configuradas (líneas 32-36)
+[ ] trivia.html - Pregunta 1 personalizada (línea ~75)
+[ ] trivia.html - Pregunta 2 personalizada (línea ~92)
+[ ] trivia.html - Pregunta 3 personalizada (línea ~109)
+[ ] sorpresa.html - Mensaje de amor escrito (línea ~178)
+[ ] sorpresa.html - Firma personalizada (línea ~205)
+[ ] sorpresa.html - Música configurada (Spotify o local)
+[ ] index.html - Título/subtítulo personalizados (opcional)
+[ ] Probado en PC (http://localhost:5000)
+[ ] Probado en celular (http://TU_IP:5000)
+[ ] Todas las páginas funcionan correctamente
+[ ] La trivia valida respuestas correctamente
+[ ] La música reproduce correctamente
+
+═══════════════════════════════════════════════════════════════════════════════
+💡 CONSEJOS FINALES
+═══════════════════════════════════════════════════════════════════════════════
+
+1. GUARDA COPIAS: Antes de hacer cambios, copia los archivos originales
+
+2. PRUEBA CADA CAMBIO: Después de editar, recarga la página para ver el resultado
+
+3. USA EDITOR DE TEXTO: Usa Notepad++, VS Code, o Sublime Text para editar
+
+4. NO USES WORD: Microsoft Word arruinará el formato del código
+
+5. RESPETA LA INDENTACIÓN: Mantén los espacios tal como están
+
+6. CIERRA LAS ETIQUETAS: Cada <div> debe tener su </div>
+
+7. COMILLAS CORRECTAS: Usa " en el código, no " o "
+
+8. GUARDA EN UTF-8: Al guardar archivos, usa codificación UTF-8
+
+═══════════════════════════════════════════════════════════════════════════════
+
+           ¡Con estos ejemplos, tu sitio será completamente único!
+                          ¡Buena suerte! 💕
+
+═══════════════════════════════════════════════════════════════════════════════

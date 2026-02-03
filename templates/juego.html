@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Me Amas? ❤️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #fff5f7 0%, #ffe4e9 50%, #ffd4e0 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            overflow-y: auto;
+            position: relative;
+            padding: 1rem;
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 700px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(255, 105, 135, 0.3);
+            backdrop-filter: blur(10px);
+            z-index: 10;
+            margin: 1rem;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            color: #ff6b9d;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(255, 107, 157, 0.3);
+        }
+
+        .question {
+            font-size: 1.8rem;
+            color: #c44569;
+            margin-bottom: 3rem;
+            font-weight: 500;
+        }
+
+        .button-container {
+            position: relative;
+            min-height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1.2rem 3rem;
+            font-size: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            border-radius: 50px;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-yes {
+            background: linear-gradient(135deg, #ff6b9d 0%, #ffa3c1 100%);
+            color: white;
+            transform: scale(1);
+        }
+
+        .btn-yes:hover {
+            transform: scale(1.3);
+            box-shadow: 0 15px 40px rgba(255, 107, 157, 0.6);
+        }
+
+        .btn-no {
+            background: linear-gradient(135deg, #95a5a6 0%, #bdc3c7 100%);
+            color: white;
+            position: absolute;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .success-message {
+            margin-top: 2rem;
+        }
+
+        .success-message h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #ff6b9d;
+            margin-bottom: 1rem;
+        }
+
+        .success-message p {
+            font-size: 1.2rem;
+            color: #c44569;
+            margin-bottom: 2rem;
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, #ffa751 0%, #ffe259 100%);
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        .hearts-explosion {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        @keyframes explode {
+            0% {
+                transform: translate(0, 0) scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--tx), var(--ty)) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            .question {
+                font-size: 1.4rem;
+            }
+            
+            .container {
+                padding: 1.5rem;
+                margin: 0.5rem;
+            }
+            
+            .btn {
+                padding: 1rem 2rem;
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 0.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+                line-height: 1.2;
+            }
+            
+            .question {
+                font-size: 1.1rem;
+                margin-bottom: 2rem;
+            }
+
+            .btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            .button-container {
+                min-height: 150px;
+                gap: 1rem;
+            }
+
+            .container {
+                padding: 1rem;
+                margin: 0.5rem;
+                border-radius: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container animate__animated animate__fadeIn">
+        <h1 class="animate__animated animate__bounceIn">Una Pregunta Importante</h1>
+        
+        <div id="game-section">
+            <p class="question">¿Me amas? 💕</p>
+            
+            <div class="button-container" id="buttonContainer">
+                <button class="btn btn-yes" id="btnYes">Sí ❤️</button>
+                <button class="btn btn-no" id="btnNo">No</button>
+            </div>
+        </div>
+
+        <div id="success-section" class="success-message hidden">
+            <h2 class="animate__animated animate__bounceIn">¡Lo sabía! 💖</h2>
+            <p class="animate__animated animate__fadeIn animate__delay-1s">
+                Sabía que me amabas bb<br>
+                Ahora vamos a jugar más cosas divertidas...
+            </p>
+            <a href="/ruleta" class="btn btn-next animate__animated animate__pulse animate__delay-2s animate__infinite">
+                Continuar ✨
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const btnYes = document.getElementById('btnYes');
+        const btnNo = document.getElementById('btnNo');
+        const buttonContainer = document.getElementById('buttonContainer');
+        const gameSection = document.getElementById('game-section');
+        const successSection = document.getElementById('success-section');
+
+        let noButtonClicks = 0;
+
+        // Función para mover el botón "No" aleatoriamente
+        function moveNoButton() {
+            const container = buttonContainer.getBoundingClientRect();
+            const button = btnNo.getBoundingClientRect();
+            
+            // Calcular posiciones aleatorias dentro del contenedor
+            const maxX = container.width - button.width - 40;
+            const maxY = container.height - button.height - 40;
+            
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+            
+            btnNo.style.left = randomX + 'px';
+            btnNo.style.top = randomY + 'px';
+            
+            // Hacer el botón "No" más pequeño con cada intento
+            noButtonClicks++;
+            const newScale = Math.max(0.5, 1 - (noButtonClicks * 0.1));
+            btnNo.style.transform = `scale(${newScale})`;
+        }
+
+        // Mover el botón "No" cuando se pasa el mouse sobre él
+        btnNo.addEventListener('mouseenter', moveNoButton);
+        
+        // También mover en dispositivos táctiles cuando se toca
+        btnNo.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            moveNoButton();
+        });
+
+        // Al intentar hacer click en "No"
+        btnNo.addEventListener('click', (e) => {
+            e.preventDefault();
+            moveNoButton();
+        });
+
+        // Cuando hace click en "Sí"
+        btnYes.addEventListener('click', () => {
+            createHeartsExplosion();
+            
+            setTimeout(() => {
+                gameSection.classList.add('hidden');
+                successSection.classList.remove('hidden');
+            }, 1000);
+        });
+
+        // Crear explosión de corazones
+        function createHeartsExplosion() {
+            const hearts = ['❤️', '💕', '💖', '💗', '💝', '💘'];
+            const rect = btnYes.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'hearts-explosion';
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = centerX + 'px';
+                heart.style.top = centerY + 'px';
+                heart.style.fontSize = (Math.random() * 30 + 20) + 'px';
+                
+                const angle = (Math.PI * 2 * i) / 20;
+                const velocity = 100 + Math.random() * 100;
+                const tx = Math.cos(angle) * velocity;
+                const ty = Math.sin(angle) * velocity;
+                
+                heart.style.setProperty('--tx', tx + 'px');
+                heart.style.setProperty('--ty', ty + 'px');
+                heart.style.animation = 'explode 1s ease-out forwards';
+                
+                document.body.appendChild(heart);
+                
+                setTimeout(() => heart.remove(), 1000);
+            }
+        }
+    </script>
+</body>
+</html>

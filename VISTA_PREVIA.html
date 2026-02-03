@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vista Previa del Proyecto</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #ff6b9d;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+        }
+        h2 {
+            color: #ff6b9d;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #ffe4e9;
+            padding-bottom: 0.5rem;
+        }
+        .page-preview {
+            background: #ffe4e9;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 10px;
+            border-left: 5px solid #ff6b9d;
+        }
+        .page-preview h3 {
+            color: #c44569;
+            margin-bottom: 0.5rem;
+        }
+        .feature-list {
+            list-style: none;
+            padding-left: 1rem;
+        }
+        .feature-list li:before {
+            content: "✓ ";
+            color: #ff6b9d;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+        .tech-badge {
+            display: inline-block;
+            background: #ff6b9d;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            margin: 0.3rem;
+            font-size: 0.9rem;
+        }
+        .warning {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 5px;
+        }
+        .success {
+            background: #d4edda;
+            border-left: 5px solid #28a745;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 5px;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        .flow-diagram {
+            background: white;
+            border: 2px solid #ff6b9d;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .flow-step {
+            display: inline-block;
+            background: #ffe4e9;
+            padding: 1rem;
+            margin: 0.5rem;
+            border-radius: 10px;
+            min-width: 150px;
+        }
+        .arrow {
+            display: inline-block;
+            color: #ff6b9d;
+            font-size: 2rem;
+            margin: 0 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌹 Sitio Web Romántico - Vista Previa 🌹</h1>
+        
+        <div class="success">
+            <strong>✅ Proyecto Completo y Listo para Usar</strong><br>
+            Todas las páginas han sido creadas con diseño responsivo y animaciones profesionales.
+        </div>
+
+        <h2>📱 Flujo de Navegación</h2>
+        <div class="flow-diagram">
+            <div class="flow-step">
+                <strong>1. Bienvenida</strong><br>
+                index.html
+            </div>
+            <div class="arrow">→</div>
+            <div class="flow-step">
+                <strong>2. Juego Sí/No</strong><br>
+                juego.html
+            </div>
+            <div class="arrow">→</div>
+            <div class="flow-step">
+                <strong>3. Trivia</strong><br>
+                trivia.html
+            </div>
+            <div class="arrow">→</div>
+            <div class="flow-step">
+                <strong>4. Flores</strong><br>
+                flores.html
+            </div>
+            <div class="arrow">→</div>
+            <div class="flow-step">
+                <strong>5. Sorpresa</strong><br>
+                sorpresa.html
+            </div>
+        </div>
+
+        <h2>🎨 Páginas Incluidas</h2>
+
+        <div class="page-preview">
+            <h3>1. Página de Bienvenida (index.html)</h3>
+            <p><strong>Ruta:</strong> <code>/</code></p>
+            <ul class="feature-list">
+                <li>Animación de entrada con Animate.css</li>
+                <li>Título elegante con fuente Dancing Script</li>
+                <li>Corazones flotantes animados en el fondo</li>
+                <li>Botón "Solo para ti" con efecto pulse</li>
+                <li>Paleta de colores: Rosa pastel, blanco y dorado</li>
+            </ul>
+        </div>
+
+        <div class="page-preview">
+            <h3>2. Juego del Sí o No (juego.html)</h3>
+            <p><strong>Ruta:</strong> <code>/juego</code></p>
+            <ul class="feature-list">
+                <li>Pregunta: "¿Me amas?"</li>
+                <li>Botón "Sí" que crece al pasar el mouse</li>
+                <li>Botón "No" que HUYE imposible de clickear</li>
+                <li>Explosión de corazones al elegir "Sí"</li>
+                <li>Compatible con touch en móviles</li>
+                <li>Transición animada a la siguiente página</li>
+            </ul>
+        </div>
+
+        <div class="page-preview">
+            <h3>3. Trivia del Amor (trivia.html)</h3>
+            <p><strong>Ruta:</strong> <code>/trivia</code></p>
+            <ul class="feature-list">
+                <li>3 preguntas personalizables sobre su relación</li>
+                <li>Validación de respuestas en el backend</li>
+                <li>Feedback visual (éxito/error) con animaciones</li>
+                <li>Sistema de sesiones para rastrear progreso</li>
+                <li>Desbloquea la sorpresa final al aprobar</li>
+                <li>Opción de reintentar si no aprueba</li>
+            </ul>
+        </div>
+
+        <div class="page-preview">
+            <h3>4. Jardín de Flores (flores.html)</h3>
+            <p><strong>Ruta:</strong> <code>/flores</code></p>
+            <ul class="feature-list">
+                <li>5 flores hechas con SVG puro (amarillas y rosas)</li>
+                <li>Animación de florecimiento al cargar la página</li>
+                <li>Movimiento suave tipo "sway" continuo</li>
+                <li>Partículas de flores flotantes decorativas</li>
+                <li>Interacción: Click en flores genera corazones</li>
+                <li>100% CSS, sin imágenes externas</li>
+            </ul>
+        </div>
+
+        <div class="page-preview">
+            <h3>5. Sorpresa Final (sorpresa.html)</h3>
+            <p><strong>Ruta:</strong> <code>/sorpresa</code></p>
+            <ul class="feature-list">
+                <li>Mensaje de amor largo y personalizable</li>
+                <li>Animaciones de texto tipo "fade in"</li>
+                <li>Confeti de corazones cayendo continuamente</li>
+                <li>Corazones flotantes desde abajo</li>
+                <li>Decoración con corazones en las 4 esquinas</li>
+                <li>Reproductor de música integrado (Spotify/local)</li>
+                <li>Firma personalizable</li>
+            </ul>
+        </div>
+
+        <h2>🛠️ Tecnologías Utilizadas</h2>
+        <div>
+            <span class="tech-badge">Python 3.8+</span>
+            <span class="tech-badge">Flask 3.0.0</span>
+            <span class="tech-badge">HTML5</span>
+            <span class="tech-badge">CSS3</span>
+            <span class="tech-badge">JavaScript</span>
+            <span class="tech-badge">Animate.css</span>
+            <span class="tech-badge">Google Fonts</span>
+            <span class="tech-badge">SVG</span>
+        </div>
+
+        <h2>📋 Archivos del Proyecto</h2>
+        <ul class="feature-list">
+            <li><code>app.py</code> - Backend Flask con 5 rutas y validación</li>
+            <li><code>requirements.txt</code> - Dependencias de Python</li>
+            <li><code>templates/</code> - 5 páginas HTML completas</li>
+            <li><code>static/</code> - Carpetas para CSS, JS y música</li>
+            <li><code>EJECUTAR.bat</code> - Script de inicio rápido (Windows)</li>
+            <li><code>README.md</code> - Documentación completa</li>
+            <li><code>GUIA_PERSONALIZACION.txt</code> - Guía de personalización</li>
+            <li><code>ESTRUCTURA_PROYECTO.txt</code> - Diagrama visual del proyecto</li>
+        </ul>
+
+        <h2>⚙️ Elementos a Personalizar</h2>
+        <div class="warning">
+            <strong>⚠️ IMPORTANTE - Personaliza antes de usar:</strong>
+            <ol style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                <li>Respuestas correctas de la trivia en <code>app.py</code></li>
+                <li>Preguntas personalizadas en <code>trivia.html</code></li>
+                <li>Mensaje de amor en <code>sorpresa.html</code></li>
+                <li>Configuración de música (Spotify o archivo local)</li>
+                <li>Firma personalizada</li>
+            </ol>
+        </div>
+
+        <h2>🚀 Cómo Iniciar</h2>
+        <div class="success">
+            <strong>Método 1 - Windows (Más Fácil):</strong>
+            <ol style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                <li>Doble click en <code>EJECUTAR.bat</code></li>
+                <li>Espera a que se instalen las dependencias</li>
+                <li>Abre <code>http://localhost:5000</code> en tu navegador</li>
+            </ol>
+        </div>
+
+        <div class="success">
+            <strong>Método 2 - Manual:</strong>
+            <ol style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                <li>Abre terminal/CMD en la carpeta del proyecto</li>
+                <li>Ejecuta: <code>pip install -r requirements.txt</code></li>
+                <li>Ejecuta: <code>python app.py</code></li>
+                <li>Abre <code>http://localhost:5000</code> en tu navegador</li>
+            </ol>
+        </div>
+
+        <h2>📱 Acceso desde Celular</h2>
+        <ol>
+            <li>Asegúrate de que PC y celular estén en la misma red WiFi</li>
+            <li>Obtén tu IP con <code>ipconfig</code> (Windows) o <code>ifconfig</code> (Mac/Linux)</li>
+            <li>En el celular, abre: <code>http://TU_IP:5000</code></li>
+            <li>Ejemplo: <code>http://192.168.1.10:5000</code></li>
+        </ol>
+
+        <h2>✨ Características Especiales</h2>
+        <ul class="feature-list">
+            <li><strong>Diseño 100% Responsivo:</strong> Perfecto en móviles, tablets y desktop</li>
+            <li><strong>Animaciones Profesionales:</strong> Usando Animate.css y CSS keyframes</li>
+            <li><strong>Sin JavaScript Complejo:</strong> Vanilla JS puro, fácil de modificar</li>
+            <li><strong>Fuentes Elegantes:</strong> Playfair Display y Dancing Script de Google</li>
+            <li><strong>Colores Románticos:</strong> Paleta de rosas pastel y dorados</li>
+            <li><strong>Interactividad Única:</strong> Botones que huyen, flores que florecen</li>
+            <li><strong>Sistema de Progreso:</strong> Usando sesiones Flask</li>
+            <li><strong>Música Integrada:</strong> Spotify o archivos locales</li>
+        </ul>
+
+        <h2>🎯 Casos de Uso</h2>
+        <ul class="feature-list">
+            <li>Regalo de aniversario</li>
+            <li>San Valentín</li>
+            <li>Cumpleaños de tu pareja</li>
+            <li>Declaración de amor creativa</li>
+            <li>Proposición de matrimonio (agregando tu propia página)</li>
+            <li>Cualquier ocasión especial</li>
+        </ul>
+
+        <div class="success" style="margin-top: 3rem; text-align: center; font-size: 1.2rem;">
+            <strong>❤️ ¡Todo está listo para crear un momento inolvidable! ❤️</strong><br>
+            <em style="color: #c44569;">Lee GUIA_PERSONALIZACION.txt para comenzar</em>
+        </div>
+    </div>
+</body>
+</html>
